@@ -1,0 +1,94 @@
+//has-a relationship
+//assocition is achived by using constructor injection
+//one-one Association
+class Address
+{
+    //instance variable
+    private int streetno;
+    private String streetname;
+    private String city;
+    private String state;
+    private String country;
+    
+    //constructor
+    public Address(int streetno,String streetname,String city,String state,String country)
+    {
+        System.out.println("address constructor");
+        this.streetno=streetno;
+        this.streetname=streetname;
+        this.city=city;
+        this.state=state;
+        this.country=country;
+    }
+    
+    //getters
+    public int getStreetNo()
+    {
+        return streetno;
+    }
+    public String getStreetName()
+    {
+        return streetname;
+    }
+    public String getCity()
+    {
+        return city;
+    }
+    public String getState()
+    {
+        return state;
+    }
+    public String getCountry()
+    {
+        return country;
+    }
+    
+    
+    
+}
+class Student
+{
+    //instance variable
+    int sid;
+    String name;
+    
+    //HAS-A variable
+    Address address;
+    
+    //constructor
+    public Student(int sid,String name,Address address)
+    {
+        System.out.println("Student constructor");
+        this.sid=sid;
+        this.name=name;
+        this.address=address;
+    }
+    
+
+    public void display()
+    {
+        System.out.println("***Student display method***");
+        System.out.println("*********Student info************");
+        System.out.println("Student id is: "+sid);
+        System.out.println("Student name is: "+name);
+        System.out.println("*********Student Address details************");
+        System.out.println("Student streetno is: "+address.getStreetNo());
+        System.out.println("Student streetName is: "+address.getStreetName());
+        System.out.println("Student city is: "+address.getCity());
+        System.out.println("Student state is: "+address.getState());
+        System.out.println("Student country is: "+address.getCountry());
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Address address=new Address(10,"senthil","chennai","TamilNadu","IND");
+		Student student=new Student(101,"kamal",address);
+		student.display();
+		
+		Address address1=new Address(20,"reddiyar","coimbatore","TamilNadu","IND");
+		Student student1=new Student(102,"lalith",address1);
+		student1.display();
+	}
+}
